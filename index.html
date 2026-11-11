@@ -351,6 +351,7 @@ function render(){
 function renderOverview(list,from,to){
   const days=daysRange(from,to);
   const latest=state.entries.reduce((a,e)=>e.key>a?e.key:a,"");
+  Object.assign(state.dateStyle,{kind:"numeric",order:"DMY",sep:"/",pad:true});
   const done=new Set(state.entries.filter(e=>e.key===latest).map(e=>e.house));
   const missing=state.houses.filter(h=>!done.has(h));
   const withData=state.houses.filter(h=>list.some(e=>e.house===h));
